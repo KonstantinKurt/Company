@@ -1,0 +1,110 @@
+html {
+    background: url(images/NY.jpg);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    
+
+}
+
+.startFormStyle {
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    border: 2px solid black;
+    width: 30%;
+    height: 30%;
+    visibility: visible;
+    background-image: url(images/sky.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    box-shadow: 3px 3px 2px #A4DDFA;
+}
+
+.startFormStyle:focus {
+    border: 3px solid blue;
+}
+
+.startFormLabel {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    height: 25%;
+    width: 80%;
+    color: white;
+    text-align: center;
+    font-size: 2vw;          /*единица vw - равно 1% от ширины исходного содержащего блока.*/
+    visibility: visible;
+    text-shadow: 3px 3px 6px blue;
+}
+
+.logIn {
+    position: absolute;
+    left: 15%;
+    top: 60%;
+    width: 30%;
+    height: 20%;
+    color: green;
+    font-size: 1.7vw;
+    text-align: center; 
+    text-shadow: 3px 3px 6px green;
+    box-shadow: 7px 7px 5px #3A3939;
+    border-style: outset;
+    cursor: pointer;
+}
+
+.logIn:hover {
+    color: #1AA0FD;
+}
+
+.logIn:active {
+    color: #1AA0FD;
+    box-shadow: 0.5px 0.5px 0.5px #3A3939;
+    border-style: inset;
+}
+
+.signIn {
+    position: absolute;
+    left: 55%;
+    top: 60%;
+    width: 30%;
+    height: 20%;
+    visibility: visible;
+    color: orange;
+    text-align: center; 
+    font-size: 1.7vw;
+    text-shadow: 3px 3px 6px green;
+    box-shadow: 7px 7px 5px #3A3939;
+    border-style: outset;
+    cursor: pointer;
+}
+
+.signIn:hover {
+    color: #1AA0FD;
+}
+
+.signIn:active {
+    color: #1AA0FD;
+    box-shadow: 0.5px 0.5px 0.5px #3A3939;
+    border-style: inset;
+}
+
+.selectLanguage{
+    position: absolute;
+    left: 85%;
+    top: 5%;
+    width: 12%;
+    visibility: visible;
+    text-align: right;
+    font-size: 1.3vw; 
+    text-shadow: 3px 3px 6px green;
+    box-shadow: 7px 7px 5px #3A3939;
+    border-style: outset;
+    cursor: pointer;
+    
+}
