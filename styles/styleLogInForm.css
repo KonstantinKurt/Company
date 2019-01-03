@@ -1,0 +1,30 @@
+.inputLoginForm {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    border: 2px solid black;
+    width: 90%;
+    height: 15%;
+    visibility: visible;
+    text-align: center;
+    font-size: 1.4vw;
+}
+.buttonHome{
+	position: absolute;
+    top: 70%;
+    left: 5%;
+    width: 15%;
+    height: 15%;
+    visibility: visible;
+    background: url(images/home.jpg);
+    background-size: cover;
+    border-style: outset;
+    cursor: pointer;
+    box-shadow: 7px 7px 5px #3A3939;
+    background-position: center center;
+    
+}
+.buttonHome:active {
+    box-shadow: 0.5px 0.5px 0.5px #3A3939;
+    border-style: inset;
+}
