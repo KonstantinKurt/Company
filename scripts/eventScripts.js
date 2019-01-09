@@ -1,10 +1,16 @@
 ;
 "use strict";
+
 let onloads = [];  // Массив функций, которые должны быть обработаны при полной загрузке страницы;
-let doc = document; // Кэшируем документ;
+const doc = document; // Кэшируем документ;
 let language = 'English'; // Переменная для проверки языка,выбранного пользователем;
+const company = new Company();
+
 ///////////////////////////
 function createStartForm(){    // Функция создает все элементы начальной формы и задает им стили;
+  const admin = new Admin('admin','1','TEST','Test',32,99999,'Admin');
+  console.log(admin);
+  company.addEmployee(admin);
   let form = doc.createElement('form');
   doc.body.appendChild(form);
   form.setAttribute('class','startFormStyle');
