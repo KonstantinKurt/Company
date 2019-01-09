@@ -5,12 +5,20 @@ let onloads = [];  // Массив функций, которые должны �
 const doc = document; // Кэшируем документ;
 let language = 'English'; // Переменная для проверки языка,выбранного пользователем;
 const company = new Company();
-
 ///////////////////////////
 function createStartForm(){    // Функция создает все элементы начальной формы и задает им стили;
-  const admin = new Admin('admin','1','TEST','Test',32,99999,'Admin');
-  console.log(admin);
-  company.addEmployee(admin);
+  
+  if (localStorage.getItem('employees') == null) {
+    let array = [];
+    localStorage.setItem("employees", JSON.stringify(array));
+  }
+  company.employees = JSON.parse(localStorage.getItem("employees"));
+  let loginCheck = company.employees.findIndex(x => x.login === 'admin');
+  if(loginCheck == -1){
+    const admin = new Admin('admin','1','TEST','Test',32,99999,'Admin');
+    company.addEmployee(admin);
+    localStorage.setItem("employees", JSON.stringify(company.employees));
+  }
   let form = doc.createElement('form');
   doc.body.appendChild(form);
   form.setAttribute('class','startFormStyle');

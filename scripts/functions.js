@@ -289,6 +289,25 @@ let getCheckSighIn = function() {
                 alert('Пароли не совпадают!');
             }
         } else {
+            switch (doc.getElementById('professionInput').options.selectedIndex) { //Чтоб не назначать айдишники, проверим содержимое;
+                case 1:
+                    let newUser = new Admin(
+                         logInInput.value,
+                         firstPasswordInput.value,
+                         firstNameInput.value,
+                         lastNameInput.value,
+                         ageInput.value,
+                         Math.floor(Math.random() * (50000 - 10000)) + 10000,
+                         'Admin'
+                        );
+                    company.addEmployee(newUser);
+                    localStorage.setItem("employees", JSON.stringify(company.employees));
+                    currentUser = company.employees.length - 1;
+                    break;
+                case 'SIGN IN':
+                    elements[i].addEventListener('click', getSignInForm);
+                    break;
+            }
             getPersonalArea();
         }
 
@@ -305,6 +324,7 @@ let getCheckLogIn = function() {
         doc.getElementById('passwordInput').style.borderColor = 'black';
     }
     if (loginCheck != -1 && passwordCheck != -1) {
+        currentUser = loginCheck;
         getPersonalArea();
     } else {
         if (loginCheck == -1) {
