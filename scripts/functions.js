@@ -298,14 +298,42 @@ let getCheckSighIn = function() {
                          lastNameInput.value,
                          ageInput.value,
                          Math.floor(Math.random() * (50000 - 10000)) + 10000,
-                         'Admin'
+                         'Admin',
+                         'hide somewhere'
                         );
                     company.addEmployee(newUser);
                     localStorage.setItem("employees", JSON.stringify(company.employees));
                     currentUser = company.employees.length - 1;
                     break;
-                case 'SIGN IN':
-                    elements[i].addEventListener('click', getSignInForm);
+                case 2:
+                    let newUser1 = new Coder(
+                         logInInput.value,
+                         firstPasswordInput.value,
+                         firstNameInput.value,
+                         lastNameInput.value,
+                         ageInput.value,
+                         Math.floor(Math.random() * (50000 - 10000)) + 10000,
+                         'Coder',
+                         'Write code'
+                        );
+                    company.addEmployee(newUser1);
+                    localStorage.setItem("employees", JSON.stringify(company.employees));
+                    currentUser = company.employees.length - 1;
+                    break;
+                case 3: 
+                    let newUser2 = new Designer(
+                         logInInput.value,
+                         firstPasswordInput.value,
+                         firstNameInput.value,
+                         lastNameInput.value,
+                         ageInput.value,
+                         Math.floor(Math.random() * (50000 - 10000)) + 10000,
+                         'Designer',
+                         'try to find admin'
+                        );
+                    company.addEmployee(newUser2);
+                    localStorage.setItem("employees", JSON.stringify(company.employees));
+                    currentUser = company.employees.length - 1;  
                     break;
             }
             getPersonalArea();

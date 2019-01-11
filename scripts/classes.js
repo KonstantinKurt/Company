@@ -16,18 +16,21 @@ class Employee extends Human{
 }
 
 class Admin extends Employee{
-	work(){
-		return `Hide somewhere and some two boxes of cigarettes`;
+	constructor(login,password,firstName,lastName,age,salary,speciality,work){
+        super(login,password,firstName,lastName,age,salary,speciality);
+        this.work = work;
 	}
 }
 class Coder extends Employee{
-	work(){
-		return `Write code`;
+	constructor(login,password,firstName,lastName,age,salary,speciality,work){
+        super(login,password,firstName,lastName,age,salary,speciality);
+        this.work = work;
 	}
 }
 class Designer extends Employee{
-	work(){
-		return `try to find an admin`;
+	constructor(login,password,firstName,lastName,age,salary,speciality,work){
+        super(login,password,firstName,lastName,age,salary,speciality);
+        this.work = work;
 	}
 }
 

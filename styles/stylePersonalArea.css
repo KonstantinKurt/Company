@@ -1,0 +1,48 @@
+.photoDiv {
+    position: absolute;
+    margin: 1%;
+    width: 20%;
+    height: 40%;
+    top: 11%;
+    border: 2px solid black;
+    background: url(images/Photo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: 3px 3px 2px #A4DDFA;
+   
+}
+.addPhotoLabel{
+	position: absolute;
+    margin: 1%;
+    top: 53%;
+    width: 20%;
+    color: white;
+    text-align: left;
+    font-size: 1.1vw;        
+    visibility: visible;
+    text-shadow: 3px 3px 6px blue;
+    
+}
+.personalAreaLabel{
+	position: absolute;
+    margin: 1%;
+    width: 98%;
+    height: 10%;
+    color: white;
+    text-align: center;
+    font-size: 2.3vw;          
+    visibility: visible;
+    text-shadow: 3px 3px 6px blue;
+}
+.personalInfo{
+	position: absolute;
+    margin: 1%;
+    width: 35%;
+    left: 22%;
+    height: 40%;
+    top: 11%;
+    border: 2px solid black;
+    background-color: white;
+    box-shadow: 3px 3px 2px #A4DDFA;
+}
