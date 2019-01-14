@@ -292,48 +292,69 @@ let getCheckSighIn = function() {
             switch (doc.getElementById('professionInput').options.selectedIndex) { //Чтоб не назначать айдишники, проверим содержимое;
                 case 1:
                     let newUser = new Admin(
-                         logInInput.value,
-                         firstPasswordInput.value,
-                         firstNameInput.value,
-                         lastNameInput.value,
-                         ageInput.value,
-                         Math.floor(Math.random() * (50000 - 10000)) + 10000,
-                         'Admin',
-                         'hide somewhere'
-                        );
+                        logInInput.value,
+                        firstPasswordInput.value,
+                        firstNameInput.value,
+                        lastNameInput.value,
+                        ageInput.value,
+                        Math.floor(Math.random() * (50000 - 10000)) + 10000,
+                        'Admin',
+                        'hide somewhere'
+                    );
                     company.addEmployee(newUser);
-                    localStorage.setItem("employees", JSON.stringify(company.employees));
+                    try {
+                        localStorage.setItem("employees", JSON.stringify(company.employees));
+                    } 
+                    catch (e) {
+                        if (e == QUOTA_EXCEEDED_ERR) {
+                            alert('Out of memory!');
+                        }
+                    }
                     currentUser = company.employees.length - 1;
                     break;
                 case 2:
                     let newUser1 = new Coder(
-                         logInInput.value,
-                         firstPasswordInput.value,
-                         firstNameInput.value,
-                         lastNameInput.value,
-                         ageInput.value,
-                         Math.floor(Math.random() * (50000 - 10000)) + 10000,
-                         'Coder',
-                         'Write code'
-                        );
+                        logInInput.value,
+                        firstPasswordInput.value,
+                        firstNameInput.value,
+                        lastNameInput.value,
+                        ageInput.value,
+                        Math.floor(Math.random() * (50000 - 10000)) + 10000,
+                        'Coder',
+                        'Write code'
+                    );
                     company.addEmployee(newUser1);
-                    localStorage.setItem("employees", JSON.stringify(company.employees));
+                    try {
+                        localStorage.setItem("employees", JSON.stringify(company.employees));
+                    } 
+                    catch (e) {
+                        if (e == QUOTA_EXCEEDED_ERR) {
+                            alert('Out of memory!');
+                        }
+                    }
                     currentUser = company.employees.length - 1;
                     break;
-                case 3: 
+                case 3:
                     let newUser2 = new Designer(
-                         logInInput.value,
-                         firstPasswordInput.value,
-                         firstNameInput.value,
-                         lastNameInput.value,
-                         ageInput.value,
-                         Math.floor(Math.random() * (50000 - 10000)) + 10000,
-                         'Designer',
-                         'try to find admin'
-                        );
+                        logInInput.value,
+                        firstPasswordInput.value,
+                        firstNameInput.value,
+                        lastNameInput.value,
+                        ageInput.value,
+                        Math.floor(Math.random() * (50000 - 10000)) + 10000,
+                        'Designer',
+                        'try to find admin'
+                    );
                     company.addEmployee(newUser2);
-                    localStorage.setItem("employees", JSON.stringify(company.employees));
-                    currentUser = company.employees.length - 1;  
+                    try {
+                        localStorage.setItem("employees", JSON.stringify(company.employees));
+                    } 
+                    catch (e) {
+                        if (e == QUOTA_EXCEEDED_ERR) {
+                            alert('Out of memory!');
+                        }
+                    }
+                    currentUser = company.employees.length - 1;
                     break;
             }
             getPersonalArea();

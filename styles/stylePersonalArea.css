@@ -46,3 +46,28 @@
     background-color: white;
     box-shadow: 3px 3px 2px #A4DDFA;
 }
+
+.buttonDeleteEmployee {
+    position: absolute;
+    left: 85%;
+    top: 57%;
+    width: 11%;
+    height: 6%;
+    color: red;
+    font-size: 1.7vw;
+    text-align: center; 
+    text-shadow: 3px 3px 6px green;
+    box-shadow: 7px 7px 5px #3A3939;
+    border-style: outset;
+    cursor: pointer;
+}
+
+.buttonDeleteEmployee:hover {
+    color: #1AA0FD;
+}
+
+.buttonDeleteEmployee:active {
+    color: #1AA0FD;
+    box-shadow: 0.5px 0.5px 0.5px #3A3939;
+    border-style: inset;
+}

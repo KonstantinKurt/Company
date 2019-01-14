@@ -47,4 +47,11 @@ class Company{
     		this.employees.splice(element,1);
     	}
     }
+    removeEmployeeByIndex(index){
+    		this.employees.splice(index,1);   	
+    }
+    removeAll(){
+    	this.employees.length = 0;
+    }
+    
 }
