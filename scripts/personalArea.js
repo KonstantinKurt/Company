@@ -15,17 +15,23 @@ let getPersonalArea = function() {
     } else {
         personalAreaLabel.innerHTML = 'Личный кабинет';
     }
-    let photoDiv = doc.createElement('div');
+    let photoDiv = doc.createElement('img');
     doc.body.appendChild(photoDiv);
+    photoDiv.id = 'photoImg';
     photoDiv.setAttribute('class', 'photoDiv');
+    if (company.employees[currentUser].photoURL != '') {
+        photoDiv.src = company.employees[currentUser].photoURL;
+    }
     let addPhotoLabel = doc.createElement('label');
     doc.body.appendChild(addPhotoLabel);
     addPhotoLabel.setAttribute('class', 'addPhotoLabel');
+    addPhotoLabel.htmlFor = 'addPhotoForm';
     if (language === 'English') {
         addPhotoLabel.innerHTML = 'Add/change photo';
     } else {
         addPhotoLabel.innerHTML = 'Добавить/Изменить фото';
     }
+
     let personalInfo = doc.createElement('div');
     doc.body.appendChild(personalInfo);
     personalInfo.setAttribute('class', 'personalInfo');
@@ -131,19 +137,18 @@ let getPersonalArea = function() {
     deleteEmployee.type = 'button';
     doc.body.appendChild(deleteEmployee);
     deleteEmployee.setAttribute('class', 'buttonDeleteEmployee');
-    deleteEmployee.addEventListener('click',deleteEmployeeByIndex);
+    deleteEmployee.addEventListener('click', deleteEmployeeByIndex);
     let deleteAllEmployees = doc.createElement('button');
     deleteAllEmployees.type = 'button';
     doc.body.appendChild(deleteAllEmployees);
     deleteAllEmployees.setAttribute('class', 'buttonDeleteEmployee');
     deleteAllEmployees.style.top = '67%';
-    deleteAllEmployees.addEventListener('click',deleteAllEmployeesFunc);
+    deleteAllEmployees.addEventListener('click', deleteAllEmployeesFunc);
     let buttons = doc.getElementsByTagName('button');
-    if(language === 'English'){
+    if (language === 'English') {
         buttons[0].innerHTML = 'Delete';
         buttons[1].innerHTML = 'Delete all';
-    }
-    else{
+    } else {
         buttons[0].innerHTML = 'Удалить';
         buttons[1].innerHTML = 'Удалить всех';
     }
@@ -153,41 +158,98 @@ let getPersonalArea = function() {
     buttonHome.setAttribute('class', 'buttonHome');
     buttonHome.addEventListener('click', goBackToStart);
     buttonHome.style.height = '12%';
-    buttonHome.style.width  = '8%';
+    buttonHome.style.width = '8%';
     buttonHome.style.top = '85%';
     buttonHome.style.left = '1%';
-    
-     
+    let form = doc.createElement('form');
+    doc.body.appendChild(form);
+    form.id = 'addPhotoForm';
+    form.setAttribute('class', 'photoForm');
+    let changePhotoInput = doc.createElement('input');
+    form.appendChild(changePhotoInput);
+    changePhotoInput.form = 'addPhotoForm';
+    changePhotoInput.type = 'text';
+    changePhotoInput.id = 'changePhoto';
+    changePhotoInput.setAttribute('class', 'changePhotobuttonStyle');
+    if (language === 'English') {
+        changePhotoInput.placeholder = 'input URL of your photo here';
+    } else {
+        changePhotoInput.placeholder = 'Введите URL Вашего фото';
+    }
+    let changePhotoButton = doc.createElement('input');
+    form.appendChild(changePhotoButton);
+    changePhotoButton.type = 'button';
+    changePhotoButton.setAttribute('class', 'buttonDeleteEmployee');
+    changePhotoButton.style.color = 'green';
+    changePhotoButton.style.top = '43%';
+    changePhotoButton.style.left = '66%';
+    changePhotoButton.style.height = '40%';
+    changePhotoButton.style.width = '30%';
+    changePhotoButton.form = 'addPhotoForm';
+    changePhotoButton.value = 'Ok';
+    changePhotoButton.addEventListener('click',changePhoto);
+   
+
 
 };
-let deleteEmployeeByIndex = function () {
-	let index = doc.getElementById('otherUsersList').selectedIndex;
+let deleteEmployeeByIndex = function() {
+    let index = doc.getElementById('otherUsersList').selectedIndex;
     let str;
-    if(language === 'English'){
+    if (language === 'English') {
         str = 'Do you really want to delete this employee?';
-    }
-    else{
+    } else {
         str = 'Вы уверены, что хотите удалить данного сотрудника?';
     }
-	let checkChoice = confirm(str);
-	if(checkChoice){
-		company.removeEmployeeByIndex(index);
-		localStorage.setItem("employees", JSON.stringify(company.employees));
-		doc.getElementById('otherUsersList').remove(index);
-	}
-};
-let deleteAllEmployeesFunc = function(){
-    let str;
-    if(language === 'English'){
-        str = 'Do you really want to clear all Data base?';
+    let checkChoice = confirm(str);
+    if (checkChoice) {
+        company.removeEmployeeByIndex(index);
+        localStorage.setItem("employees", JSON.stringify(company.employees));
+        doc.getElementById('otherUsersList').remove(index);
     }
-    else{
+};
+let deleteAllEmployeesFunc = function() {
+    let str;
+    if (language === 'English') {
+        str = 'Do you really want to clear all Data base?';
+    } else {
         str = 'Вы уверены, что хотите полностью очистить базу данных?';
     }
     let checkChoice = confirm(str);
-    if(checkChoice){
-		company.removeAll();
-		localStorage.setItem("employees", JSON.stringify(company.employees));
-		document.getElementById("otherUsersList").innerHTML = "";
-	}
+    if (checkChoice) {
+        company.removeAll();
+        localStorage.setItem("employees", JSON.stringify(company.employees));
+        document.getElementById("otherUsersList").innerHTML = "";
+    }
 };
+let changePhoto = function () {
+	let img = doc.getElementById('photoImg');
+	img.style.url = '';
+	img.src = doc.getElementById('changePhoto').value;
+	company.employees[currentUser].photoURL =  img.src;
+	localStorage.setItem("employees", JSON.stringify(company.employees));
+}; 
+
+
+
+
+
+
+
+ /*function changePhoto() {
+    let file = doc.getElementById('changePhoto').files[0];
+    let img = doc.getElementById('photoImg');
+    img.src = '';
+    let reader = new FileReader();
+    reader.addEventListener("load", function() {
+        img.src = reader.result;
+        console.log(reader.result);
+        company.employees[currentUser].photoURL =  reader.result;
+        console.log(reader.result);
+        localStorage.setItem("employees", JSON.stringify(company.employees));
+
+    }, false);
+    console.log(reader.result);
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+};*/

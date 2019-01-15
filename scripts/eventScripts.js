@@ -7,7 +7,7 @@ let language = 'English'; // Переменная для проверки язы
 const company = new Company();
 ///////////////////////////
 function createStartForm(){    // Функция создает все элементы начальной формы и задает им стили;
-  
+  //localStorage.clear();
   if (localStorage.getItem('employees') == null) {
     let array = [];
     localStorage.setItem("employees", JSON.stringify(array));
@@ -16,9 +16,11 @@ function createStartForm(){    // Функция создает все элем�
   let loginCheck = company.employees.findIndex(x => x.login === 'admin');
   if(loginCheck == -1){
     const admin = new Admin('admin','1','TEST','Test',32,99999,'Admin');
+    admin.changePhotoURL('styles/images/admin.jpg');
     company.addEmployee(admin);
     localStorage.setItem("employees", JSON.stringify(company.employees));
   }
+  
   let form = doc.createElement('form');
   doc.body.appendChild(form);
   form.setAttribute('class','startFormStyle');
